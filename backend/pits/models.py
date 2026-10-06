@@ -39,3 +39,7 @@ class LiquorSample(models.Model):
     taken_at = models.DateTimeField(auto_now_add=True)
     ph = models.FloatField()
     operator = models.CharField(max_length=64, blank=True)
+
+    class Meta:
+        # “最近酸碱度”统一口径：时间倒序，同刻钟以 id 兜底。
+        ordering = ["-taken_at", "-id"]
